@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+    <title>CodePen - K Draft, time &amp; ambience sounds</title>
+
+
+
+
+        <style>
+      @import url("//fonts.googleapis.com/css?family=Amaranth:400italic,400,700italic,700");
+/*
+.minutes li:nth-child(31) {
+  padding-bottom: 80px;
+    clear: both;
+}
+*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #000000;
+  text-align: center;
+  font-family: Verdana;
+  color: #ffffff;
+font-weight: normal;
+}
+
+h1 {
+  text-shadow: 0px 1px 0px #555555;
+  /*font-size: 200% !important;*/
+  font-size: 150%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  float: left;
+  background: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.time-container {
+  padding: 10px;
+  width: 1580px;
+  margin: 0 auto;
+}
+
+.time-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.time-container > div {
+  float: left;
+}
+
+.hours {
+  width: 184px;
+}
+
+.hours li {
+  width: 42px;
+  height: 42px;
+  margin: 2px;
+  margin-bottom: 58px;
+}
+
+.hours li:nth-child(n+13) {
+  border-top: 8px solid #ffffff;
+}
+
+
+.minutes-seconds {
+  width: 470px;
+}
+.minutes {
+  width: 860px;
+}
+.minutes li:nth-child(10n+10) {
+  border-top: 8px solid #fefefe;
+}
+.minutes li:nth-child(10n+9) {
+  border-top: 8px solid #fefefe;
+}
+.minutes li:nth-child(10n+8) {
+  border-top: 8px solid #fefefe;
+}
+.minutes li:nth-child(10n+7) {
+  border-top: 8px solid #fefefe;
+}
+.minutes li:nth-child(10n+6) {
+  border-top: 8px solid #fefefe;
+}
+
+.seconds {
+  width: 302px;
+}
+
+.minutes li {
+  width: 82px;
+  height: 82px;
+  margin: 2px;
+  margin-bottom: 10px !important;
+}
+
+.seconds li {
+  width: 48px;
+  height: 48px;
+  margin: 2px;
+}
+
+.punctuation {
+  padding: 20px 20px;
+  height: 145px;
+}
+
+.punctuation:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.punctuation li {
+  width: 29px;
+  height: 29px;
+  float: none;
+  background: none;
+  border-bottom: none;
+}
+
+.punctuation li.white {
+  background: #ededed;
+  border-bottom: 2px solid #dedede;
+}
+
+.day-active {
+  display: none;
+  background: #666666 !important;
+  border-bottom: 2px solid #767676 !important;
+}
+
+.hours-active {
+  background: #666666 !important;
+  border-bottom: 4px solid #767676 !important;
+  border-RIGHT: 4px solid #767676 !important;
+}
+
+.minutes-active {
+  background: #666666 !important;
+  border-bottom: 4px solid #767676 !important;
+  border-RIGHT: 4px solid #767676 !important;
+}
+
+.seconds-active {
+  background: #555555 !important;
+  border-bottom: 4px solid #767676 !important;
+  border-right: 4px solid #767676 !important;
+
+}
+
+    </style>
+
+    <script>
+  window.console = window.console || function(t) {};
+</script>
+
+
+
+  </head>
+
+  <body translate="no">
+
+
+<!--
+Colours: http://www.colourlovers.com/palette/4106307/Perry_ornitorrinco
+Font: http://vandelaydesign.com/blog/design/google-web-fonts/
+Looping fade: http://stackoverflow.com/questions/1301529/jquery-fade-with-loop-and-delay
+-->
+
+<h1 id="bigtime">  </h1>
+<div class="time-container">
+  <div class="hours">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+<ul>
+    <li class="day-active" style=""></li>
+</ul>
+  </div>
+  <div class="punctuation" style="opacity: 0.906094;">
+    <ul>
+      <li></li>
+      <li class="white"></li>
+      <li></li>
+      <li class="white"></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="minutes-seconds minutes">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="punctuation" style="opacity: 0.906094;">
+    <ul>
+      <li></li>
+      <li class="white"></li>
+      <li></li>
+      <li class="white"></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="minutes-seconds seconds">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="output" class="output"></div>
+
+<audio src="http://docs.google.com/uc?export=open&amp;id=0B5MSr-JiV9wYS0hWajRjRURWY00" autoplay="" loop=""></audio>
+
+<audio src="http://docs.google.com/uc?export=open&amp;id=0B5MSr-JiV9wYWXJwTDZnSnRQeUE" autoplay="" loop=""></audio>
+
+<audio src="http://docs.google.com/uc?export=open&amp;id=0B5MSr-JiV9wYdmN5YzNsdzFEUWc" autoplay="" loop=""></audio>
+
+<br>
+
+
+
+    <script src="jquery.min.js"></script>
+
+        <script>
+
+
+// say a message
+function speak(text, callback) {
+    var u = new SpeechSynthesisUtterance();
+    u.text = text;
+    u.lang = 'en-GB';
+ u.rate = '0.85';
+u.pitch = '0.7';
+
+    u.onend = function () {
+        if (callback) {
+            callback();
+        }
+    };
+
+    u.onerror = function (e) {
+        if (callback) {
+            callback(e);
+        }
+    };
+
+    speechSynthesis.speak(u);
+}
+
+$(document).ready(function() {
+  setInterval("getDateTime()", 1000);
+  fadePunctuation();
+// might fail init sometimes.. a bit q n dirt
+
+});
+
+var current_datetime, hours, minutes, seconds;
+
+function getDateTime() {
+  current_datetime = new Date();
+
+  hours = current_datetime.getHours();
+  newminutes = current_datetime.getMinutes();
+  seconds = current_datetime.getSeconds();
+
+    percent = Math.round(((hours + newminutes/60)/24)*100);
+  remains = 100-percent;
+    $("#bigtime").html("" + " " + hours + ":" + newminutes + " (" + remains + "% Remains)");
+ // $("#bigtime").html("Time" + " " + hours + ":" + newminutes + ":" + seconds + " (" + remains + "% Remains)");
+
+  if(null == minutes) {
+        $(".seconds li:nth-child(-n+" + seconds + ")").addClass("seconds-active");
+
+  }
+  if(minutes !== newminutes) {
+  // every x m    .. x=10
+    if(Math.round(minutes/10) !== Math.round(newminutes/10)) {
+
+      speak("Now. The time is " + hours + " : " + newminutes + " ");
+
+   percent = Math.round(((hours + newminutes/60)/24)*100);
+   // speak(percent + " percent of the day has passed. ");
+    speak("Percent that remains is ")
+      speak(100-percent + " ");
+
+             speak("The time is  " + hours + " : " + newminutes + ". Follow a Plan, Work from a list, Zero based thinking knowing what you now know - would you start that thing? If not - how fast can you change stuff? Focus, Regular deep breathing, Straight back. Up at 5:55. Exercise. "); //; Activate voice commands by saying; 'hello Baby dude'.. Inhale, hold, exhale, spine erect and relax. Imagine wished outcome with useful value multiplying  efforts. Energize proactivly feeling gratitude. Simple structures, focus, synnergy and compassion! ....I will imagine a wished outcome with useful value multiplying your efforts. Energize proactivly with gratitude. Simple structures, focus and win-win deals! ";
+} // every x m
+   minutes = newminutes;
+}
+
+  $(".hours li:nth-child(-n+" + hours + ")").addClass("hours-active");
+
+  $(".hours .day-active").css({
+    opacity: (hours / 24)
+  });
+
+  if (hours == 0) {
+    $(".hours li").removeClass("hours-active");
+  }
+
+//for (i = 0; i < 10; i++) {
+ //   text += cars[i] + "<br>";
+      $(".minutes li:nth-child(-n+" + minutes + ")").addClass("minutes-active");
+//  }
+
+  $(".minutes .hours-active").css({
+    opacity: (minutes / 60)
+  });
+
+  if (minutes == 0) {
+    $(".minutes li").removeClass("minutes-active");
+  }
+
+//if(Math.round(seconds/10) == seconds/10){
+
+if(seconds % 10 === 0){ // every x for an update
+    //console.log(seconds % 5);
+
+  $(".seconds li:nth-child(-n+" + seconds + ")").fadeOut( "slow", function() {
+    // Animation complete
+ $(".seconds li:nth-child(-n+" + seconds + ")").addClass("seconds-active");
+
+  }).fadeIn( "slow", function() {
+    // Animation complete
+
+  });
+
+
+
+  $(".seconds .minutes-active").css({
+    opacity: (seconds / 60)
+  });
+
+  if (seconds == 0) {
+    $(".seconds li").removeClass("seconds-active");
+  }
+
+
+
+}
+
+}
+
+function fadePunctuation() {
+
+
+  $(".punctuation")
+  .animate({ opacity: 0.7 }, { duration: 500 })
+  .animate({ opacity: 1 }, { duration: 500,     complete: fadePunctuation} );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var colors = {
+    grapefruit:  'grapefruit',
+    red:         'grapefruit',
+    bittersweet: 'bittersweet',
+    orange:     'bittersweet',
+    mint:       'mint',
+    darkgreen:  'mint',
+    sunflower:  'sunflower',
+};
+var keys = Object.keys( colors );
+var speech = new webkitSpeechRecognition();
+speech.language = 'en-GB';
+speech.rate = '0.65';
+speech.pitch = '0.5';
+speech.continuous = true;
+speech.interimResults = true;
+speech.onresult = function( e ) {
+    if ( e.results[e.results.length-1].isFinal) {
+      var said = e.results[e.results.length-1][0].transcript.toLowerCase();
+      output.textContent = said;
+
+        for (var i = keys.length - 1; i >= 0; i--) {
+            var sanitized_said = said.trim().replace( ' ', '' );
+
+
+
+          if ( sanitized_said === 'hello' ) {
+              alert("hello");
+          }
+         /*   if ( keys[i] === sanitized_said ) {
+
+                //document.body.className = 'body--' + colors[keys[i]];
+
+            } else if ( sanitized_said === 'remove' || sanitized_said === 'none' || sanitized_said === 'clean' ) {
+                document.body.className = '';
+            }
+            */
+        };
+    };
+}
+
+ speech.start();
+      //# sourceURL=pen.js
+    </script>
+
+
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+
+
+
+
+</body></html>
